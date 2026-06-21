@@ -115,60 +115,12 @@
     <section class="section" id="brief" style="background:var(--charcoal)">
       <div class="container" style="max-width:900px">
         <div class="section-head is-centered reveal" style="margin-bottom:2.5rem">
-          <span class="eyebrow is-light is-centered">Tell Us About the Role</span>
-          <h2 class="serif" style="color:#fff;margin-top:1.25rem">Send your brief.</h2>
+          <span class="eyebrow is-light is-centered">Send your brief.</span>
         </div>
-        <div class="form-block reveal">
-          <div class="form-success" role="status">Thank you, your brief has been received. We'll respond within 24 business hours with availability and next steps.</div>
-          <!-- To activate email delivery, set the action to your endpoint, e.g.
-               https://formsubmit.co/luxuryhospitalityhiring@gmail.com
-               Until then the form falls back to the visitor's email client. -->
-          <form data-form data-email="luxuryhospitalityhiring@gmail.com" data-subject="New hiring brief, Website" action="" method="POST">
-            <input type="hidden" name="_subject" value="New hiring brief, Website" />
-            <div class="form-grid">
-              <div class="field">
-                <label for="company">Company / Brand name</label>
-                <input id="company" name="Company" type="text" required />
-              </div>
-              <div class="field">
-                <label for="e-name">Your name</label>
-                <input id="e-name" name="Name" type="text" required />
-              </div>
-              <div class="field">
-                <label for="e-email">Email</label>
-                <input id="e-email" name="Email" type="email" required />
-              </div>
-              <div class="field">
-                <label for="roles">Role(s) you're hiring for</label>
-                <input id="roles" name="Roles" type="text" required />
-              </div>
-              <div class="field">
-                <label for="ptype">Position type</label>
-                <select id="ptype" name="Position type">
-                  <option>Permanent</option>
-                  <option>Seasonal</option>
-                  <option>Executive Search</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="timeline">Timeline</label>
-                <select id="timeline" name="Timeline">
-                  <option>Immediate</option>
-                  <option>Within 30 days</option>
-                  <option>Planning ahead</option>
-                </select>
-              </div>
-              <div class="field field--full">
-                <label for="notes">Anything else we should know</label>
-                <textarea id="notes" name="Notes"></textarea>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button class="btn" type="submit">Send Brief</button>
-            </div>
-            <p class="form-note">All inquiries are treated as confidential by default. We respond within 24 business hours.</p>
-          </form>
+        <div class="airtable-card reveal">
+          <iframe class="airtable-embed" title="Hiring brief form" src="https://airtable.com/embed/app2NPR0lQ0SENall/pag6kFeBdcbrX4czv/form" frameborder="0" onmousewheel="" width="100%" height="720" style="background: transparent; border: none; display: block;"></iframe>
         </div>
+        <p class="form-note" style="text-align:center;color:rgba(255,255,255,.6);margin-top:1.5rem">All inquiries are treated as confidential by default. We respond within 24 business hours.</p>
       </div>
     </section>
   </main>
