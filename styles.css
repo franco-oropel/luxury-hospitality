@@ -671,6 +671,14 @@ h2.serif,
    Forms
    ============================================================ */
 .form-block { background: var(--paper); border: 1px solid var(--line); padding: clamp(1.75rem, 4vw, 3.5rem); }
+.airtable-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: clamp(16px, 2vw, 22px);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+}
+.airtable-card .airtable-embed { width: 100%; }
 .form-grid {
   display: grid;
   gap: 1.5rem;
@@ -1348,7 +1356,7 @@ h2.serif,
   position: relative;
   margin: 0 clamp(.75rem, 2vw, 1.5rem);
   border-radius: clamp(20px, 2.4vw, 34px);
-  min-height: clamp(400px, 50vh, 560px);
+  min-height: clamp(520px, 74vh, 780px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1359,7 +1367,10 @@ h2.serif,
 .cand-hero__scrim {
   position: absolute;
   inset: 0;
-  background: radial-gradient(62% 58% at 50% 40%, rgba(255,246,234,.55), rgba(255,246,234,0) 72%);
+  /* same gray wash as the home video hero */
+  background:
+    radial-gradient(82% 70% at 50% 44%, rgba(241,241,243,.48), transparent 80%),
+    linear-gradient(180deg, rgba(241,241,243,.74) 0%, rgba(241,241,243,.68) 42%, rgba(241,241,243,.82) 100%);
   pointer-events: none;
 }
 .cand-hero__inner { position: relative; z-index: 1; }
@@ -1372,7 +1383,7 @@ h2.serif,
   letter-spacing: -0.025em;
   color: var(--charcoal);
   margin: 0;
-  text-shadow: 0 1px 22px rgba(255,250,242,.6);
+  text-shadow: 0 1px 22px rgba(241,241,243,.6);
 }
 .cand-hero__sub { margin-top: .15rem; }
 .cand-hero__cta { margin-top: clamp(1.5rem, 3vw, 2.25rem); }
