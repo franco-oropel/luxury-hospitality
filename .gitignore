@@ -5,6 +5,7 @@ Thumbs.db
 # Editor / tooling
 .claude/
 *.log
+serve.py
 
 # Secrets (when you add a backend later)
 .env
