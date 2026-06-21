@@ -144,6 +144,8 @@
     }
 
     let rot = -0.16;   // start centred on Europe / UK
+    var mqMobile = window.matchMedia("(max-width: 760px)");
+    var rotSpeed = mqMobile.matches ? 0.0034 : 0.0014;   // spin faster on mobile
 
     function pin(x, y, s, color, alpha) {
       const r = 4.7 * s, hy = y - 11 * s;
@@ -194,11 +196,15 @@
                pin(p.x, p.y, 0.85 + p.z * 0.35, m[1], alpha);
              });
 
-      if (!reduce) { rot += 0.0014; requestAnimationFrame(frame); }
+      if (!reduce) { rot += rotSpeed; requestAnimationFrame(frame); }
     }
 
     resize();
-    window.addEventListener("resize", function () { resize(); if (reduce) frame(); });
+    window.addEventListener("resize", function () {
+      resize();
+      rotSpeed = mqMobile.matches ? 0.0034 : 0.0014;   // keep speed in sync with viewport
+      if (reduce) frame();
+    });
     frame();
   })();
 
@@ -275,18 +281,36 @@
       "mailto:" + to + "?subject=" + subject + "&body=" + encodeURIComponent(body);
   }
 
-  /* ---------- Pick hero video source by viewport ---------- */
+  /* ---------- Pick hero video source by viewport + ensure autoplay ---------- */
   // Mobile gets the trimmed clip (no letterbox); desktop gets the full video.
   (function () {
     var hv = document.querySelector(".hero-video__media");
-    if (!hv) return;
+    if (!hv || reduce) return;   // reduced motion is handled below
+
     var isMobile = window.matchMedia("(max-width: 760px)").matches;
     var src = isMobile ? hv.dataset.srcMobile : hv.dataset.src;
     var source = hv.querySelector("source");
+
+    // iOS only autoplays when muted is set as a PROPERTY and playback is inline
+    hv.muted = true;
+    hv.setAttribute("muted", "");
+    hv.playsInline = true;
+
     if (src && source && source.getAttribute("src") !== src) {
       source.setAttribute("src", src);
-      hv.load();
+      hv.load();   // reloading cancels the autoplay attribute's effect on iOS…
     }
+
+    // …so start playback explicitly as soon as there are frames to show
+    function tryPlay() {
+      var p = hv.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
+    }
+    tryPlay();
+    hv.addEventListener("loadeddata", tryPlay, { once: true });
+    hv.addEventListener("canplay", tryPlay, { once: true });
+    // last resort (iOS Low Power Mode blocks autoplay): resume on first touch
+    document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
   })();
 
   /* ---------- Pause background video for reduced motion ---------- */
