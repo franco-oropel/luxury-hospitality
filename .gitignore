@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / tooling
+.claude/
+*.log
+
+# Secrets (when you add a backend later)
+.env
+.env.*
+!.env.example
